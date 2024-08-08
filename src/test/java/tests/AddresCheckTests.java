@@ -86,7 +86,7 @@ public class AddresCheckTests extends TestBase {
         });
     }
 
-    @Tag("smoke")
+    @Tag("negative")
     @ParameterizedTest(name = "Пользователь не видит подключенных услуг на невалидном адресе {0}")
     @ValueSource(strings = {
             "12345", "!№%:,.."
