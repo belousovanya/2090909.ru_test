@@ -1,7 +1,9 @@
 package tests;
 
 import io.qameta.allure.Param;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import pages.MainPage;
@@ -21,6 +23,7 @@ public class AddressCheckTests extends TestBase {
             "г Новосибирск, Цветной проезд, д 23", "г Новосибирск, ул Семьи Шамшиных, д 22/1",
             "г Новосибирск, Тюленина, д 19/1"
     })
+    @DisplayName("Пользователь может увидеть подключенный адрес")
     public void addressAvailabilityTest(@Param("Address") String name) {
         step("Открываем главную страницу", () -> open(baseUrl));
         step("На главной странице нажимаем на кнопку Проверить адрес", () -> mainPage.clickCheckAddressButton());
@@ -38,6 +41,7 @@ public class AddressCheckTests extends TestBase {
     @ValueSource(strings = {
             "г Новосибирск, Депутатская, д 46", "Новосибирский р-н, поселок Ложок, ул Тесла"
     })
+    @DisplayName("Пользователь не видит подключенных услуг на адресе")
     public void addressUnavailabilityTest(@Param("Address") String name) {
         step("Открываем главную страницу", () -> open(baseUrl));
         step("На главной странице нажимаем на кнопку Проверить адрес", () -> mainPage.clickCheckAddressButton());
@@ -48,11 +52,31 @@ public class AddressCheckTests extends TestBase {
         step("Проверить, что выводится сообщение о недоступности услуг на адресе", () -> addressPopupComponent.checkErrorResultMessage("Дом еще не подключили"));
     }
 
+    @Tag("smoke")
+    @Test
+    @DisplayName("Пользователь может закрыть всплывающее окно ввода адреса")
+    public void сloseAddressPopupTest() {
+        step("Открываем главную страницу", () -> open(baseUrl));
+        step("На главной странице нажимаем на кнопку Проверить адрес", () -> mainPage.clickCheckAddressButton());
+        step("Нажимаем на кнопку закрытия всплывающего окна", () -> addressPopupComponent.checkPopupCloseButton());
+    }
+
+    @Tag("smoke")
+    @Test
+    @DisplayName("Пользователь может закрыть всплывающее окно после ввода адреса")
+    public void closeAddressPopupAfterInput() {
+        step("Открываем главную страницу", () -> open(baseUrl));
+        step("На главной странице нажимаем на кнопку Проверить адрес", () -> mainPage.clickCheckAddressButton());
+        step("Ввести адрес, на котором интернет не подключен", () -> addressPopupComponent.checkAddressInput("12345").checkAddressButton());
+        step("Нажимаем на кнопку закрытия всплывающего окна", () -> addressPopupComponent.checkPopupCloseButton());
+    }
+
     @Tag("negative")
     @ParameterizedTest(name = "Пользователь не видит подключенных услуг на невалидном адресе {0}")
     @ValueSource(strings = {
             "12345", "!№%:,.."
     })
+    @DisplayName("Пользователь не видит подключенных услуг на невалидном адресе")
     public void invalidAddressInputTest(@Param("Invalid Address") String name) {
         step("Открываем главную страницу", () -> open(baseUrl));
         step("На главной странице нажимаем на кнопку Проверить адрес", () -> mainPage.clickCheckAddressButton());
