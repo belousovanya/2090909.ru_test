@@ -18,11 +18,12 @@ public class AddressCheckTests extends TestBase {
     AddressCheckPopupComponent addressPopupComponent = new AddressCheckPopupComponent();
 
     @Tag("smoke")
-    @ParameterizedTest(name = "Пользователь может увидеть подключенный адрес {0}")
+    @ParameterizedTest
     @ValueSource(strings = {
             "г Новосибирск, Цветной проезд, д 23", "г Новосибирск, ул Семьи Шамшиных, д 22/1",
             "г Новосибирск, Тюленина, д 19/1"
     })
+    @DisplayName("Пользователь может увидеть подключенный адрес")
     public void addressAvailabilityTest(@Param("Address") String name) {
         step("Открываем главную страницу", () -> open(baseUrl));
         step("На главной странице нажимаем на кнопку Проверить адрес", () -> mainPage.clickCheckAddressButton());
@@ -36,10 +37,11 @@ public class AddressCheckTests extends TestBase {
     }
 
     @Tag("smoke")
-    @ParameterizedTest(name = "Пользователь не видит подключенных услуг на адресе {0}")
+    @ParameterizedTest
     @ValueSource(strings = {
             "г Новосибирск, Депутатская, д 46", "Новосибирский р-н, поселок Ложок, ул Тесла"
     })
+    @DisplayName("Пользователь не видит подключенных услуг на адресе")
     public void addressUnavailabilityTest(@Param("Address") String name) {
         step("Открываем главную страницу", () -> open(baseUrl));
         step("На главной странице нажимаем на кнопку Проверить адрес", () -> mainPage.clickCheckAddressButton());
@@ -70,10 +72,11 @@ public class AddressCheckTests extends TestBase {
     }
 
     @Tag("negative")
-    @ParameterizedTest(name = "Пользователь не видит подключенных услуг на невалидном адресе {0}")
+    @ParameterizedTest
     @ValueSource(strings = {
             "12345", "!№%:,.."
     })
+    @DisplayName("Пользователь не видит подключенных услуг на невалидном адресе")
     public void invalidAddressInputTest(@Param("Invalid Address") String name) {
         step("Открываем главную страницу", () -> open(baseUrl));
         step("На главной странице нажимаем на кнопку Проверить адрес", () -> mainPage.clickCheckAddressButton());
