@@ -30,6 +30,7 @@ dependencies {
             "com.codeborne:selenide:$selenideVersion",
             "org.slf4j:slf4j-simple:2.0.7",
             "io.qameta.allure:allure-selenide:$allureVersion",
+            "io.qameta.allure:allure-junit5:$allureVersion",
             "org.seleniumhq.selenium:selenium-java:4.23.0"
     )
 }
@@ -53,4 +54,8 @@ tasks.withType(Test) {
             includeTags (System.getProperty("type"))
         }
     }
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs << "-parameters"
 }
