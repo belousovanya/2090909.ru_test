@@ -1,5 +1,5 @@
 # Проект по автоматизации тестирования для компании [Электронный город (Бизнес)](https://2090909.ru/)
-<p align="center"><a href = "https://www.wildberries.ru"><img src="images/logo/eg.png" width="300" title="Электронный город"></a></p>
+<p align="center"><a href = "https://2090909.ru/"><img src="images/logo/eg.png" width="300" title="Электронный город"></a></p>
 
 > Компания ООО «Новотелеком» работает на новосибирском рынке связи под торговой маркой «Электронный город» и "Электронный город бизнес" с 2003 года. Это самая крупная сеть Новосибирска с охватом 92% территории города.
 
@@ -38,7 +38,7 @@ ____
 <a href="ht[images](images)tps://github.com/allure-framework/allure2"><img src="images/logo/Allure.svg" width="50" height="50"  alt="Allure"/></a> 
 <a href="https://qameta.io/"><img src="images/logo/Allure2.svg" width="50" height="50"  alt="Allure TestOps"/></a>   
 <a href="https://www.jenkins.io/"><img src="images/logo/Jenkins.svg" width="50" height="50"  alt="Jenkins"/></a>  
-<a href="https://www.atlassian.com/ru/software/jira/"><img src="images/logo/Jira.svg" width="50" height="50"  alt="Jira"/></a>  
+<a href="https://www.atlassian.com/ru/software/jira"><img src="images/logo/Jira.svg" width="50" height="50"  alt="Jira"/></a>  
 </p>
 
 ____
