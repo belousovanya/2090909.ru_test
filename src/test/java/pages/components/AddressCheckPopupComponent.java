@@ -60,4 +60,14 @@ public class AddressCheckPopupComponent {
         errorResultMessage.shouldNotBe(visible);
         return this;
     }
+
+    public AddressCheckPopupComponent checkPopupIsClosed() {
+        popupTitle.shouldNotBe(visible);
+        return this;
+    }
+
+    public AddressCheckPopupComponent checkPopupIsVisible() {
+        popupTitle.shouldBe(visible);
+        return this;
+    }
 }
